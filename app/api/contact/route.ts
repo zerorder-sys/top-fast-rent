@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { createTransport } from "nodemailer";
+import { EMAIL_CONFIG, isEmailConfigured } from "@/config/email";
 
 type ContactBody = {
   firstName: string;
@@ -45,9 +47,54 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: integrate with an email service or notification backend.
-  // Example: send the submitted data to a business inbox, save it in a database,
-  // or forward it to a webhook.
+  if (!isEmailConfigured) {
+    return NextResponse.json(
+      {
+        success: false,
+        error:
+          "Email delivery is not configured. Please set SMTP_USER and SMTP_PASS.",
+      },
+      { status: 500 }
+    );
+  }
+
+  const transporter = createTransport({
+    host: EMAIL_CONFIG.smtp.host,
+    port: EMAIL_CONFIG.smtp.port,
+    secure: EMAIL_CONFIG.smtp.secure,
+    auth: {
+      user: EMAIL_CONFIG.smtp.auth.user,
+      pass: EMAIL_CONFIG.smtp.auth.pass,
+    },
+  });
+
+  try {
+    await transporter.sendMail({
+      from: `${data.firstName} ${data.lastName} <${EMAIL_CONFIG.from}>`,
+      to: EMAIL_CONFIG.recipient,
+      replyTo: data.email,
+      subject: `[Top Fast Rent Contact] ${data.subject}`,
+      text: `Name: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nSubject: ${data.subject}\nComments:\n${data.comments}`,
+      html: `
+        <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Subject:</strong> ${data.subject}</p>
+        <p><strong>Comments:</strong></p>
+        <p>${data.comments?.replace(/\n/g, "<br />")}</p>
+      `,
+    });
+  } catch (error) {
+    console.error("Contact email send failed:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        error:
+          "Unable to send your message right now. Please try again later.",
+      },
+      { status: 500 }
+    );
+  }
 
   return NextResponse.json({ success: true });
 }

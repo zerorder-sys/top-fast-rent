@@ -4,6 +4,7 @@ import { useState, type FormEvent, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import SpotlightCard from "./SpotlightCard";
 import { ASSETS } from "@/lib/assets";
+import { SITE_CONFIG } from "@/config/site";
 
 type FormState = {
   firstName: string;
@@ -79,11 +80,9 @@ export default function ContactForm() {
         >
           <p className="font-display text-sm font-bold text-white">Contact Us</p>
           <h1 className="mt-2 font-display text-3xl font-bold leading-tight text-[#b19540] sm:text-4xl lg:text-5xl">
-            What&apos;s your special occasion?
+            {SITE_CONFIG.contact.headline}
           </h1>
-          <p className="mt-4 text-zinc-300">
-            Tell us about your event and we&apos;ll curate the perfect ride.
-          </p>
+          <p className="mt-4 text-zinc-300">{SITE_CONFIG.contact.description}</p>
         </motion.div>
 
         <SpotlightCard className="p-8">
@@ -194,6 +193,47 @@ export default function ContactForm() {
             </motion.div>
           )}
         </SpotlightCard>
+
+        <div
+          id="contact-map"
+          className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-5 text-sm text-zinc-300 shadow-sm sm:p-6"
+        >
+          <p className="font-semibold text-white">BEYOND COWORKING</p>
+          <p className="mt-2 leading-relaxed text-zinc-400">
+            90 A, Canal road South, Giringar Housing Colony, Giri Nagar Housing Society,
+            Giri Nagar, Kadavanthra, Ernakulam, Kochi, Kerala 682020, India
+          </p>
+          <p className="mt-3 text-xs text-zinc-500">
+            4.2&nbsp;
+            <a
+              href="https://maps.google.com/?cid=15806141278068325439&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-US&source=embed"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#b19540] underline"
+            >
+              View on Google Maps
+            </a>
+          </p>
+
+          <div className="mt-4 overflow-hidden rounded-3xl border border-white/10 bg-zinc-950">
+            <iframe
+              title="BEYOND COWORKING location"
+              src="https://maps.google.com/maps?cid=15806141278068325439&output=embed"
+              className="h-96 w-full sm:h-[520px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+
+        <div className="mt-6 text-center">
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-full border border-[#b19540] bg-[#b19540] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-zinc-950 transition hover:border-[#c69e63] hover:bg-[#c69e63]"
+          >
+            Back to home
+          </a>
+        </div>
       </div>
     </section>
   );

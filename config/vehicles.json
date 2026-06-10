@@ -1,0 +1,86 @@
+{
+  "tierA": {
+    "title": "Duration-Based Daily Rates",
+    "subtitle": "Rent a car in Cochin / Self Drive",
+    "vehicles": [
+      {
+        "name": "Toyota Fortuner",
+        "assetKey": "toyotaFortuner",
+        "category": "Rent a car in Cochin / Self Drive",
+        "rates": [
+          { "label": "Upto 10 Days", "value": "₹6,000/day" },
+          { "label": "Less than 30 Days", "value": "₹5,500/day" },
+          { "label": "Minimum 30 days", "value": "₹5,000/day" }
+        ]
+      },
+      {
+        "name": "Innova Crysta",
+        "assetKey": "innovaCrysta",
+        "category": "Rent a car in Cochin / Self Drive",
+        "rates": [
+          { "label": "Upto 10 Days", "value": "₹3,500/day" },
+          { "label": "Less than 30 Days", "value": "₹3,500/day" },
+          { "label": "30 Days or More", "value": "₹2,750/day" }
+        ]
+      },
+      {
+        "name": "Mahindra Thar (Self Drive)",
+        "assetKey": "mahindraThar",
+        "category": "Rent a car in Cochin / Self Drive",
+        "rates": [
+          { "label": "Upto 10 Days", "value": "₹3,250/day" },
+          { "label": "Less than 30 Days", "value": "₹2,750/day" },
+          { "label": "30 Days or More", "value": "₹2,500/day" }
+        ]
+      }
+    ]
+  },
+  "otherFleet": [
+    "Mahindra XUV 700 AX 5 S",
+    "Maruti Suzuki Ertiga",
+    "Swift VXI",
+    "Wagon R VXI",
+    "Toyota Urban Cruiser Hyryder"
+  ],
+  "tierB": {
+    "title": "KM-Packaged Luxury Fleet",
+    "subtitle": "Rent a car in Cochin",
+    "vehicles": [
+      {
+        "name": "BMW 5 Series",
+        "assetKey": "bmw5Series",
+        "packageKm": 80,
+        "packagePrice": "₹12,000",
+        "extraKmRate": "₹50"
+      },
+      {
+        "name": "Mercedes-Benz",
+        "assetKey": "mercedesBenz",
+        "packageKm": 80,
+        "packagePrice": "₹12,500",
+        "extraKmRate": "₹50"
+      },
+      {
+        "name": "Mini Cooper",
+        "assetKey": "miniCooper",
+        "packageKm": 80,
+        "packagePrice": "₹12,500",
+        "extraKmRate": "₹50"
+      },
+      {
+        "name": "Audi A6",
+        "assetKey": "audiA6",
+        "packageKm": 80,
+        "packagePrice": "₹13,000",
+        "extraKmRate": "₹50"
+      },
+      {
+        "name": "Jaguar",
+        "assetKey": "jaguar",
+        "packageKm": 80,
+        "packagePrice": "₹14,500",
+        "extraKmRate": "₹50"
+      }
+    ]
+  }
+}
