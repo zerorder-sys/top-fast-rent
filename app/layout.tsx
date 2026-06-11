@@ -34,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <title>Top Fast Rent a Car | Kochi, Kerala</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${libreBaskerville.variable} ${montserrat.variable} font-sans`}>
