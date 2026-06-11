@@ -21,8 +21,22 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: `${BRAND.name} | Premium Car Rentals in Kochi`,
   description: BRAND.tagline,
+  metadataBase: new URL("https://topfastrentacar.joelreji.space"),
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: `${BRAND.name} | Premium Car Rentals in Kochi`,
+    description: BRAND.tagline,
+    siteName: BRAND.name,
+    type: "website",
+    locale: "en_US",
+    url: "https://topfastrentacar.joelreji.space",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${BRAND.name} | Premium Car Rentals in Kochi`,
+    description: BRAND.tagline,
   },
 };
 
@@ -33,10 +47,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <title>Top Fast Rent a Car | Kochi, Kerala</title>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body className={`${libreBaskerville.variable} ${montserrat.variable} font-sans`}>
         <Navbar />
         <main>{children}</main>
